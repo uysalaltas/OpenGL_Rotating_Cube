@@ -1,0 +1,26 @@
+
+#include <iostream>
+#include <GL\glew.h>
+#include <GLFW\glfw3.h>
+#include "Shader.h"
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
+
+GLenum err = glewInit();
+if (GLEW_OK != err)
+{
+    fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+}
+
+Shader ourShader(
+    "C:\\Users\\uysal\\source\\repos\\OpenGL_Cube_Manupilation\\OpenGL_Cube_Manupilation\\src\\shader.vert", 
+    "C:\\Users\\uysal\\source\\repos\\OpenGL_Cube_Manupilation\\OpenGL_Cube_Manupilation\\src\\shader.frag"
+);
+
+unsigned char* data = stbi_load(
+    "C:\\Users\\uysal\\source\\repos\\OpenGL_Cube_Manupilation\\OpenGL_Cube_Manupilation\\src\\textures\\container.jpg", 
+    &width, &height, &nrChannels, 0);
